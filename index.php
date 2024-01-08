@@ -20,10 +20,13 @@
 		include "./inc/navbar.php";
 		include './vistas/' . $_GET['vista'] . '.php';
 		include "./inc/script.php";
+
 	} elseif ($_GET['vista'] === 'login') {
 		include './vistas/login.php';
+
 	} else {
 		include './vistas/404.php';
+		
 	}
 
 	?>
