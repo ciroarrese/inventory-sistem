@@ -8,6 +8,7 @@
 </head>
 
 <body>
+	<!--div id="loader">Cargando...div-->
 	<?php
 
 	// vamos a manejar las visatas para validar el valor que pueda tener $_GET['vista']
@@ -20,13 +21,10 @@
 		include "./inc/navbar.php";
 		include './vistas/' . $_GET['vista'] . '.php';
 		include "./inc/script.php";
-
 	} elseif ($_GET['vista'] === 'login') {
 		include './vistas/login.php';
-
 	} else {
 		include './vistas/404.php';
-		
 	}
 
 	?>
