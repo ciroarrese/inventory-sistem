@@ -39,5 +39,37 @@
     /** FIN -> VERIFICACION CAMPOS*/
 
     /** INICIO -> CONSULTA EXISTENCIA DE DATOS */
-    
+    $dbUser = check_login($user, $pass);
+
+    if(!$dbUser){
+        echo '
+            <div class="notification is-danger is-light">
+                <b>¡ERROR!</b><br>
+                El USUARIO o la PASSWORD incorrectos
+            </div>
+        ';
+        exit();
+    }
     /** FIN -> CONSULTA EXISTENCIA DE DATOS */
+
+    /** INICIO -> SETEO DE SESSION */
+    $_SESSION['id'] = $dbUser->usuario_id;
+    $_SESSION['name'] = $dbUser->usuario_nombre;
+    $_SESSION['lastname'] = $dbUser->usuario_apellido;
+    $_SESSION['user'] = $dbUser->usuario_usuario;
+    $_SESSION['user'] = $dbUser->usuario_usuario;
+    /** FIN -> SETEO DE SESSION */
+
+    /** INICIO -> REDIRECCION */
+    if(headers_sent()){
+        echo '
+        <script>
+        window.location.href="index.php?vista=home"
+        </script>
+        ';
+        
+    } else {
+        header('Location: index.php?vista=home');
+
+    }
+    /** FIN -> REDIRECCION */

@@ -392,4 +392,38 @@
         return $success;
     }
 
+    /**
+     * Funcion encargada de validar que un usario exista en la DB
+     * 
+     * @param string $user cadena de texto con el usuario a buscar
+     * @param string $pass cade de texto con la pass que se ingresó
+     * 
+     * @return mixed retorna $result o FALSE en caso de no exitir
+     */
+    function check_login($user, $pass){
+        $db = dbConnect();
+
+        // realizamos la query para obtener los datos de ese usuario
+        $result = $db->query("
+            SELECT *
+            FROM usuario
+            WHERE usuario_usuario = '$user'
+        ");
+
+        // si no hay resultados retornamos false
+        if (!$result) {
+            return FALSE;
+        }
+
+        // si hay resultados los convertimos en un objeto
+        $result = $result->fetch(PDO::FETCH_OBJ);
+
+        // validamos si la contraseña es distinta
+        if(!password_verify($pass, $result->usuario_clave)) {
+            return FALSE;
+        }
+
+        return $result;
+    }
+
 ?>
