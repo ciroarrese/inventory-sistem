@@ -34,7 +34,6 @@
 		<?php
 
 		if (isset($_POST['login_user']) && isset($_POST['login_pass'])) {
-
 			require_once './php/main.php';
 			require_once './php/start_session.php';
 		}

@@ -409,20 +409,23 @@
             FROM usuario
             WHERE usuario_usuario = '$user'
         ");
+        
+        unset($db);
 
-        // si no hay resultados retornamos false
-        if (!$result) {
-            return FALSE;
+        // si el resultado es ditinto de 1 hay resultados retornamos false
+        if ($result->rowCount() !== 1) {
+            return false;
         }
 
         // si hay resultados los convertimos en un objeto
         $result = $result->fetch(PDO::FETCH_OBJ);
-
+        
+        
         // validamos si la contraseña es distinta
-        if(!password_verify($pass, $result->usuario_clave)) {
-            return FALSE;
+        if(!password_verify($pass, $result->usuario_clave) && !$result->usuario_usuario !== $user) {
+            return false;
         }
-
+        
         return $result;
     }
 

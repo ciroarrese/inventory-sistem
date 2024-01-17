@@ -1,6 +1,6 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-    <!-- navbar-item es el logo y la acción la cliquear el logo -->
+        <!-- navbar-item es el logo y la acción al cliquear el logo -->
         <a class="navbar-item" href="index.php?vista=home">
             <img src="./img/logo.png" width="35">
         </a>
@@ -12,8 +12,11 @@
         </a>
     </div>
 
+    <!-- Barra Navegación Superior -->
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
+
+            <!-- Usuario -->
             <div id="user" class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                     Usuario
@@ -32,6 +35,7 @@
                 </div>
             </div>
 
+            <!-- Categorias -->
             <div id="categories" class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                     Categorias
@@ -50,6 +54,7 @@
                 </div>
             </div>
 
+            <!-- Productos -->
             <div id="Products" class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                     Productos
@@ -72,13 +77,16 @@
             </div>
         </div>
 
+        <!-- Botones Finales -->
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+                    <!-- Boton Mi Cuenta -->
                     <a class="button is-primary is-rounded">
                         Mi cuenta
                     </a>
-                    <a class="button is-outlined is-rounded">
+                    <!-- Boton Salir -->
+                    <a href="index.php?vista=logout" class="button is-outlined is-rounded">
                         Salir
                     </a>
                 </div>

@@ -40,13 +40,13 @@
 
     /** INICIO -> CONSULTA EXISTENCIA DE DATOS */
     $dbUser = check_login($user, $pass);
-
+    
     if(!$dbUser){
         echo '
-            <div class="notification is-danger is-light">
-                <b>¡ERROR!</b><br>
-                El USUARIO o la PASSWORD incorrectos
-            </div>
+        <div class="notification is-danger is-light">
+        <b>¡ERROR!</b><br>
+        El USUARIO o la PASSWORD incorrectos
+        </div>
         ';
         exit();
     }
@@ -61,15 +61,14 @@
     /** FIN -> SETEO DE SESSION */
 
     /** INICIO -> REDIRECCION */
+    // validamos si hemos enviado los encabezados
     if(headers_sent()){
         echo '
         <script>
         window.location.href="index.php?vista=home"
         </script>
         ';
-        
     } else {
         header('Location: index.php?vista=home');
-
     }
     /** FIN -> REDIRECCION */
