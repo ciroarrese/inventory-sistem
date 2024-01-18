@@ -57,7 +57,6 @@
     $_SESSION['name'] = $dbUser->usuario_nombre;
     $_SESSION['lastname'] = $dbUser->usuario_apellido;
     $_SESSION['user'] = $dbUser->usuario_usuario;
-    $_SESSION['user'] = $dbUser->usuario_usuario;
     /** FIN -> SETEO DE SESSION */
 
     /** INICIO -> REDIRECCION */

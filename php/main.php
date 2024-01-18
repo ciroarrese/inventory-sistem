@@ -429,4 +429,34 @@
         return $result;
     }
 
+    /**
+     * Función que toma por parámetro los datos de nombre y apellido (opcional) y retorna un saludo
+     * dependiendo del horario del servidor -3 hs
+     * 
+     * @param string $name nombre que figurará en el mensaje
+     * @param string $lastname apellido que figurará en el mensaje
+     * 
+     * @return string mensaje de saludo
+     */
+    function welcome($name, $lastname = null){
+        $hour = strval(date("h") - '3');
+        $msj = '';
+
+        if ($hour >= '6' && $hour < '12') {
+            $msj = '¡Buenos días! ';
+        } elseif ($hour >= '12' && $hour < '20') {
+            $msj = 'Buenas tardes, ';
+        } else {
+            $msj = 'Buenas noches, ';
+        }
+
+        if ($lastname) {
+            $msj = $msj . $name . ' ' . $lastname;
+        } else {
+            $msj = $msj . $name;
+        }
+
+        return $msj;
+    }
+
 ?>
