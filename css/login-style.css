@@ -14,7 +14,7 @@
   --error-color: #ff0000;
 }
 
-body {
+.body-login {
   background-image: url("../img/pexels-lumn-167698.jpg");
   background-position: center;
   background-size: cover;

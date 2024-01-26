@@ -439,7 +439,7 @@
      * @return string mensaje de saludo
      */
     function welcome($name, $lastname = null){
-        $hour = strval(date("h") - '3');
+        $hour = strval(date("H") - '3');
         $msj = '';
 
         if ($hour >= '6' && $hour < '12') {
