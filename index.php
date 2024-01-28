@@ -8,10 +8,9 @@
 </head>
 
 <body>
-	<!--div id="loader">Cargando...div-->
 	<?php
 
-	// vamos a manejar las visatas para validar el valor que pueda tener $_GET['vista']
+	// vamos a manejar las vistas para validar el valor que pueda tener $_GET['vista']
 	if (!isset($_GET['vista']) || $_GET['vista'] == '') {
 		$_GET['vista'] = 'login';
 	}
@@ -19,14 +18,15 @@
 	if (is_file('./vistas/' . $_GET['vista'] . '.php') && $_GET['vista'] != 'login' && $_GET['vista'] != '404') {
 
 		// Bloquear ingresos forzados por URL
-		if(!isset($_SESSION['id']) || !isset($_SESSION['user'])){
-			include('./vistas/logout.php');
+		if (!isset($_SESSION['id']) || !isset($_SESSION['user'])) {
+			include './vistas/logout.php';
 			exit();
 		}
 
-		include "./inc/navbar.php";
+		include './inc/loader.php';
+		include './inc/navbar.php';
 		include './vistas/' . $_GET['vista'] . '.php';
-		include "./inc/script.php";
+		include './inc/script.php';
 	} elseif ($_GET['vista'] === 'login') {
 		include './vistas/login.php';
 	} else {

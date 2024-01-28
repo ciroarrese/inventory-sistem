@@ -4,3 +4,4 @@
 <link rel="stylesheet" href="./css/bulma.min.css">
 <link rel="stylesheet" href="./css/estilos.css">
 <link rel="stylesheet" href="./css/login-style.css">
+<link rel="stylesheet" href="./css/book-loader.css">

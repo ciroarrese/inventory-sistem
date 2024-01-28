@@ -1,3 +1,5 @@
+<script src="./js/script-loader.js"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
 
