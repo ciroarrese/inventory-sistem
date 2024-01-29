@@ -7,7 +7,7 @@
         echo '
             <script>
                 location.reload(true);
-                window.location.href="index.php?vista=longin";
+                window.location.href="index.php?vista=login";
             </script>
             ';
     } else {

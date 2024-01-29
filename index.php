@@ -26,7 +26,7 @@
 		include './inc/loader.php';
 		include './inc/navbar.php';
 		include './vistas/' . $_GET['vista'] . '.php';
-		include './inc/script.php';
+		include './inc/scripts.php';
 	} elseif ($_GET['vista'] === 'login') {
 		include './vistas/login.php';
 	} else {

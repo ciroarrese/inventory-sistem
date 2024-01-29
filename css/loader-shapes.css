@@ -1,0 +1,43 @@
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255, 1); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 75px;
+  aspect-ratio: 1; 
+  display: grid;
+}
+
+.spinner:before,
+.spinner:after {
+  content: "";
+  grid-area: 1/1;
+  width: 35px;
+  aspect-ratio: 1;
+  background-color: #474aff;
+  box-shadow: 0 0 0 3px #474aff inset;
+  filter: drop-shadow(40px 40px 0 #474aff);
+  animation: l8 2s infinite alternate;
+}
+
+.spinner:after {
+  margin: 0 0 0 auto; 
+  filter: drop-shadow(-40px 40px 0 #474aff);
+  animation-delay: -1s;
+}
+
+@keyframes l8 {
+  0%,10%   {border-radius:0}
+  30%,40%  {border-radius:50% 0}
+  60%,70%  {border-radius:50%}
+  90%,100% {border-radius:0 50%}
+}
