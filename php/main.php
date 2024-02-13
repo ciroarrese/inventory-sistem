@@ -191,109 +191,85 @@
      * Funcion encargada de sumar una paginación a nuestra aplicación
      * 
      * @param int $pag pagina en la que nos encontramos
-     * @param int $total cantidad total de paginas
+     * @param int $totalPag cantidad total de paginas
      * @param string $url ruta de la pagina
      * @param int $buttons cantidad de botones que queremos mostrar
      * 
      * @return string variable con el html de la paginación
      * 
      */
-    function table_pag($pag, $total, $url, $buttons){
-        $paginator = '
-            <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-        ';
 
-        // primera parte. Boton anterior y primera página
+    function table_pag($pag, $totalPag, $url, $buttons){
+        $paginator = '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
+
         if ($pag <= 1) {
             $paginator .= '
-                <a class="pagination-previous is-disabled" disabled>
+                <a class="pagination-previous is-disabled" disabled >
                     Anterior
                 </a>
-
                 <ul class="pagination-list">
             ';
         } else {
             $paginator .= '
-                <a class="pagination-previous" href="'.$url.($pag - 1).'">
+                <a class="pagination-previous" href="' . $url . ($pag - 1) . '" >
                     Anterior
                 </a>
-
                 <ul class="pagination-list">
                     <li>
-                        <a class="pagination-link" href="'.$url.'1">
+                        <a class="pagination-link" href="' . $url . '1">
                             1
                         </a>
                     </li>
                     <li>
-                        <span class="pagination-ellipsis">
-                            &hellip;
-                        </span>
+                        <span class="pagination-ellipsis">&hellip;</span>
                     </li>
             ';
         }
 
-        // Tercera parte. Generar botones intermedios
-        $count = 0; # contador de botones
-        for ($i=$pag;$i <= $total; $i++) { 
-
-            // validamos que la antidad de botones sea la deseada
+        $count = 0;
+        for ($i = $pag; $i <= $totalPag; $i++) {
             if ($count >= $buttons) {
-                break; # cortamos el ciclo
+                break;
             }
-
-            // Si el boton es el elegido actualmente, lo resltamos. Caso contrario queda normal
             if ($pag == $i) {
                 $paginator .= '
                     <li>
-                        <a class="pagination-link is-current" href="'.$url.$i.'">
-                            '.$i.'
-                        </a>
+                        <a class="pagination-link is-current" href="' . $url . $i . '">' . $i . '</a>
                     </li>
                 ';
             } else {
                 $paginator .= '
                     <li>
-                        <a class="pagination-link" href="'.$url.$i.'">
-                            '.$i.'
-                        </a>
+                        <a class="pagination-link" href="' . $url . $i . '">' . $i . '</a>
                     </li>
                 ';
             }
-
-            // Contamos que se agregó un botón para llevar la cuenta
-            $count ++;
-            
+            $count++;  
         }
 
-        // Tercera parte. Boton siguiente y última pagina
-        if ($pag == $total) {
+        if ($pag == $totalPag) {
             $paginator .= '
                 </ul>
-                <a class="pagination-next is-disabled" disabled>
-                    Siguiente
-                </a>
+                    <a class="pagination-next is-disabled" disabled >
+                        Siguiente
+                    </a>
             ';
         } else {
             $paginator .= '
                     <li>
-                        <span class="pagination-ellipsis">
-                            &hellip;
-                        </span>
+                        <span class="pagination-ellipsis">&hellip;</span>
                     </li>
                     <li>
-                        <a class="pagination-link" href = "'.$url.$total.'"aria-label="Goto page 47">
-                            '.$total.'
-                        </a>
-                    </li>  
+                        <a class="pagination-link" href="' . $url . $totalPag . '">' . $totalPag . '</a>
+                    </li>
                 </ul>
-                <a class="pagination-next" href="'.$url.($pag + 1).'">
+                <a class="pagination-next" href="' . $url . ($pag + 1) . '" >
                     Siguiente
                 </a>
             ';
         }
 
         $paginator .= '</nav>';
-        
         return $paginator;
     }
 
