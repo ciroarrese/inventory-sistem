@@ -415,7 +415,9 @@
      * @return string mensaje de saludo
      */
     function welcome($name, $lastname = null){
-        $hour = strval(date("H") - '4');
+        date_default_timezone_set('America/Argentina/Cordoba');
+
+        $hour = strval(date('H'));
         $msj = '';
 
         if ($hour >= '6' && $hour < '12') {

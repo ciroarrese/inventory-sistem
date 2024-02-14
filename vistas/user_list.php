@@ -7,8 +7,16 @@
 
     <?php
         require_once './php/main.php'; // incluimos las funciones
-        require_once './php/table_pages.php'; // incluimos el uso de paginas
         require_once './php/user_table_lister.php'; // incluimos el listador de usuarios
+        
+        $vista = 'user_list';
+        $tpul = tablePages($vista);
+        
+        $records = 10;
+        $search = '';
+
+        table($tpul['page'], $tpul['url'], $records, $search);
+        
     ?>
 
 </div>
