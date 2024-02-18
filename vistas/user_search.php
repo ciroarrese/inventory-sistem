@@ -5,10 +5,12 @@
 
 <div class="container pb-6 pt-6">
     <?php
-        require_once "./php/main.php";
-
-        if (isset($_POST['modulo_buscador'])) {
-            require_once "./php/buscador.php";
+        require_once './php/main.php'; # Funciones #
+        require_once "./php/user_table_lister.php"; # Paginador usuario #
+        
+        // si se encuentra seteada la variable 'user_search' llamamos a search_engine.php
+        if (isset($_POST['user_search'])) {
+            require_once "./php/search_engine.php";
         }
 
         // si no está iniciada la variable de sesión 'user_search' y se encuentra vacía
@@ -17,7 +19,9 @@
         <div class="columns">
             <div class="column">
                 <form action="" method="POST" autocomplete="off">
-                    <input type="hidden" name="modulo_buscador" value="usuario">
+
+                    <input type="hidden" name="user_search" value="usuario">
+
                     <div class="field is-grouped">
                         <p class="control is-expanded">
                             <input class="input is-rounded" type="text" name="txt_buscador" placeholder="¿Qué estas buscando?" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,30}" maxlength="30">
@@ -26,6 +30,7 @@
                             <button class="button is-info" type="submit">Buscar</button>
                         </p>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -34,13 +39,15 @@
     ?>
         <div class="columns">
             <div class="column">
+
                 <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off">
                     <input type="hidden" name="modulo_buscador" value="usuario">
                     <input type="hidden" name="eliminar_buscador" value="usuario">
-                    <p>Estas buscando <strong>“<?php echo $_SESSION['busqueda_usuario']; ?>”</strong></p>
+                    <p>Estas buscando <strong>“<?php echo $_SESSION['user_search']; ?>”</strong></p>
                     <br>
                     <button type="submit" class="button is-danger is-rounded">Eliminar busqueda</button>
                 </form>
+
             </div>
         </div>
     <?php
@@ -49,22 +56,14 @@
             require_once "./php/usuario_eliminar.php";
         }
 
-        if (!isset($_GET['page'])) {
-            $pagina = 1;
-        } else {
-            $pagina = (int) $_GET['page'];
-            if ($pagina <= 1) {
-                $pagina = 1;
-            }
-        }
+        $vista = 'user_search';
+        $tpus = tablePages($vista);
 
-        $pagina = limpiar_cadena($pagina);
-        $url = "index.php?vista=user_search&page="; /* <== */
-        $registros = 15;
-        $busqueda = $_SESSION['busqueda_usuario']; /* <== */
+        $records = 15;
+        $search = $_SESSION['user_search'];
 
-        # Paginador usuario #
-        require_once "./php/usuario_lista.php";
+        table($tpus['page'], $tpus['url'], $records, $search);
+
     }
     ?>
 </div>
